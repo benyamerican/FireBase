@@ -4,14 +4,49 @@
         <meta charset="UTF-8">
         <title>FireBase</title>
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <!-- --------------------------------------BOOT STRAP------------------------------ -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
+
+
+        <!-- _________________date time input__________________________________ -->
+    <div class="form">
+        <form action="">
+            <br><br>
+            Train Name<br>
+            <input type="text" id="trainName" ><hr>
+            Destination<br>
+            <input type="text" id="destination" ><hr>
+            Schedule<br>
+            <input id="time" type="time" ><hr>
+            Frequency(min)<br>
+            <input type="number" min="0" id="frequency" ><hr>
+            <input id ="submit" type="submit">
+        </form>
+    </div>
 
 
 
 
     <!-- -----------------java Script----------------- -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- ----------------FIREBASE DATBASE------------------------- -->
+        
+<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAvTOHZovq8R-aKPWAnqXEnPvfCTTjdKcU",
+    authDomain: "fir-hm-edadd.firebaseapp.com",
+    databaseURL: "https://fir-hm-edadd.firebaseio.com",
+    projectId: "fir-hm-edadd",
+    storageBucket: "fir-hm-edadd.appspot.com",
+    messagingSenderId: "1024416615976"
+  };
+  firebase.initializeApp(config);
+</script>
+<!-- ----------------------------------- -->
         <script src="assets/javascript/logic.js"></script>
     </body>
 </html>
