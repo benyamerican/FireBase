@@ -29,9 +29,12 @@ var frequency;
 
 $("#submit").on('click',function(){
     event.preventDefault();
+   
     /////////////getting data from the form//////
+    
     trainName = $("#trainName").val().trim();
     $("#trainName").val('');
+    
 
     destination = $("#destination").val().trim();
     $("#destination").val('');
@@ -41,12 +44,31 @@ $("#submit").on('click',function(){
 
     frequency = $("#frequency").val().trim();
     $("#frequency").val('');
+    
 
   ////////saving data as an object in firebase/////
+  if((trainName) && (destination) && (timeSchedule) && (frequency)){
   dataBase.ref().set({
+     
       trainName:trainName,
       destination:destination,
       timeSchedule:timeSchedule,
       frequency:frequency,
+    
   });
+}else{console.log('You must fill out the form completely')}
+ 
 });
+dataBase.ref().on("value", function(snapshot) {
+
+  ////Consolelog change value/////////
+  
+    console.log(snapshot.val().trainName);
+    console.log(snapshot.val().destination);
+    console.log(snapshot.val().timeSchedule);
+    console.log(snapshot.val().frequency);
+
+  
+  }, function(errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
