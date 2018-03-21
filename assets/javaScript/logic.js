@@ -19,17 +19,29 @@
 // As a final challenge, make it so that only users who log into the site with their Google or GitHub accounts can use your site. You'll need to read up on Firebase authentication for this bonus exercise.
 
 /////////////////SCRIPT//////////////////////
-/////////////variables////////////
+/////////////global variables////////////
 var dataBase = firebase.database();
+var trainName;
+var destination;
+var timeSchedule;
+var frequency;
 
 
 $("#submit").on('click',function(){
     event.preventDefault();
     /////////////getting data from the form//////
     trainName = $("#trainName").val().trim();
+    $("#trainName").val('');
+
     destination = $("#destination").val().trim();
+    $("#destination").val('');
+
     timeSchedule = $("#time").val().trim();
+    $("#time").val('');
+
     frequency = $("#frequency").val().trim();
+    $("#frequency").val('');
+
   ////////saving data as an object in firebase/////
   dataBase.ref().set({
       trainName:trainName,
