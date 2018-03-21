@@ -19,6 +19,19 @@
 // As a final challenge, make it so that only users who log into the site with their Google or GitHub accounts can use your site. You'll need to read up on Firebase authentication for this bonus exercise.
 
 /////////////////SCRIPT//////////////////////
+//////////////////firebase ///////////////
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAvTOHZovq8R-aKPWAnqXEnPvfCTTjdKcU",
+    authDomain: "fir-hm-edadd.firebaseapp.com",
+    databaseURL: "https://fir-hm-edadd.firebaseio.com",
+    projectId: "fir-hm-edadd",
+    storageBucket: "fir-hm-edadd.appspot.com",
+    messagingSenderId: "1024416615976"
+  };
+  firebase.initializeApp(config);
+
 /////////////global variables////////////
 var dataBase = firebase.database();
 var trainName;
@@ -61,7 +74,7 @@ $("#submit").on('click',function(){
 });
 dataBase.ref().on("value", function(snapshot) {
 
-  ////Consolelog change value/////////
+  ////Console.log change value/////////
   
     console.log(snapshot.val().trainName);
     console.log(snapshot.val().destination);
