@@ -20,7 +20,6 @@
 
 /////////////////SCRIPT//////////////////////
 //////////////////firebase ///////////////
-
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyAvTOHZovq8R-aKPWAnqXEnPvfCTTjdKcU",
@@ -32,8 +31,11 @@
   };
   firebase.initializeApp(config);
 
-/////////////global variables////////////
 var dataBase = firebase.database();
+
+
+/////////////global variables////////////
+
 var trainName;
 var destination;
 var timeSchedule;
@@ -72,16 +74,3 @@ $("#submit").on('click',function(){
 }else{console.log('You must fill out the form completely')}
  
 });
-dataBase.ref().on("value", function(snapshot) {
-
-  ////Console.log change value/////////
-  
-    console.log(snapshot.val().trainName);
-    console.log(snapshot.val().destination);
-    console.log(snapshot.val().timeSchedule);
-    console.log(snapshot.val().frequency);
-
-  
-  }, function(errorObject) {
-    console.log("The read failed: " + errorObject.code);
-  });
