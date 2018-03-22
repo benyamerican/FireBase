@@ -1,3 +1,34 @@
-.form{
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+#form{
+  
     margin-left: 5%;
+    width: 20%;
+    float: left;
+  
+    
+}
+
+#display{
+    display: inline-block;
+  
+    margin: 30px 70px 30px 30px;
+   
+    max-width:65%; 
+    clear: both;
+   
 }

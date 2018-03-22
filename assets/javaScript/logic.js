@@ -31,16 +31,14 @@
   };
   firebase.initializeApp(config);
 
-var dataBase = firebase.database();
+var database = firebase.database();
 
 
 /////////////global variables////////////
-
 var trainName;
 var destination;
 var timeSchedule;
 var frequency;
-
 
 $("#submit").on('click',function(){
     event.preventDefault();
@@ -59,18 +57,50 @@ $("#submit").on('click',function(){
 
     frequency = $("#frequency").val().trim();
     $("#frequency").val('');
-    
-
+ 
   ////////saving data as an object in firebase/////
   if((trainName) && (destination) && (timeSchedule) && (frequency)){
-  dataBase.ref().set({
+    database.ref().push({
      
       trainName:trainName,
       destination:destination,
       timeSchedule:timeSchedule,
       frequency:frequency,
-    
+      dateAdded: firebase.database.ServerValue.TIMESTAMP,
+       
   });
 }else{console.log('You must fill out the form completely')}
- 
 });
+//  ,targeting shit saved in the firebase and show them in a table
+database.ref().on("child_added", function(snapshot) {
+    ////refreshes the page
+    //$('#display').empty();
+    // creating a stupid table to show the shit
+  $("#display").append
+  ("<tr><td>" + snapshot.val().trainName +
+   " </td><td> "  + snapshot.val().destination +
+    " </td><td> "  + snapshot.val().frequency +
+     " </td><td> "  + snapshot.val().timeSchedule + 
+      " </td></tr>");
+
+      var tableRowObj = snapshot.val();
+      var getFrequency = tableRowObj.frequency;
+      var getTime = tableRowObj.timeSchedule;
+
+      
+     // console.log(getFrequency);
+     // console.log(getTime);
+
+      
+
+      //console.log(Object.values(snapshot.val())[2]);
+      //console.log(Object.values(snapshot.val())[3]);
+});
+//console.log(Object.values(snapshot.val()));
+//Object.values(database)
+// var time = new Date();
+// var m = time.getMinutes();
+// var h = time.getHours();
+// var location = time();
+// console.log(time);
+
